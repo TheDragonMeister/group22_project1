@@ -14,8 +14,8 @@ public class ships {
     //values that must be held by all ships
     private String name;
     private int Length;
-    private int[] Start;
-    private int[] End;
+    private location start;
+    private location end;
 
     //This is what the ship will be if there is nothing given to the ship intializer in the other files
     //basically it is all set to nothing but luckily we will always be setting the name and length to some values by the end
@@ -23,24 +23,25 @@ public class ships {
     public ships(){
         name = "";
         Length = 0;
-        Start = new int[] {0,0};
-        End = new int[] {0,0};
+        start = new location(0,0);
+        end = new location(0,0);
     }
 
     //this is if the ship has variables that needed to be inputted by the other files. This is what will happen often.
-    public ships(String name, int Length, int[] Start, int[] End){
+    public ships(String name, int Length, location start, location end){
         this.name = name;
         this.Length = Length;
-        this.Start = Start;
-        this.End = End;
+        this.start = new location(start);
+        this.end = new location(end);
     }
 
     // copy constructor
-    public ships(ships aship){
-        name = aship.name;
-        Length = aship.Length;
-        Start = aship.Start;
-        End = aship.End;
+    public ships(ships copymepapa){
+        name = copymepapa.name;
+        Length = copymepapa.Length;
+        //gotta have those new otherwise there may be an operator overload not taking the chance bucko
+        start = new location(copymepapa.start);
+        end = new location(copymepapa.end);
     }
 
 }

@@ -5,7 +5,7 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+//import com.google.gson.GsonBuilder;
 
 public class Main {
 
@@ -29,8 +29,8 @@ public class Main {
         Gson gson = new Gson();
         String model = new String(gson.toJson(doggo));
         System.out.print(model);
-
-        return null;
+        return model;
+        //return null;
     }
 
     //This function should accept an HTTP request and deseralize it into an actual Java object. -possibly the worst description i have ever seen
