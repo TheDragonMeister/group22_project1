@@ -1,6 +1,8 @@
-# cs361 Project 1
+# cs361 Project 1 wiw
 This is the code you will use as a starting point for Project 1.  The code you have been given has the front end for a [battleship](https://en.wikipedia.org/wiki/Battleship_(game)) game.
 As is often the case when developing real-world software, you and your team have been given a front end, and are responsible for developing a back-end that will make the game work correctly.
+
+TEST
 
 # Concepts
 Two commonly used methods for a request-response between a client and server are: `GET` and `POST`.

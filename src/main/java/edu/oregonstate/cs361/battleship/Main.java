@@ -4,6 +4,8 @@ import spark.Request;
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
+import com.google.gson.Gson;
+//import com.google.gson.GsonBuilder;
 
 public class Main {
 
@@ -19,13 +21,23 @@ public class Main {
         post("/placeShip/:id/:row/:col/:orientation", (req, res) -> placeShip(req));
     }
 
-    //This function should return a new model
+    //This function should return a new model- fuck this description no
+    //battleship model creates the structure that is going to be used and all fuckin new model does
+    // is create a new battleship and put it into json. that is so dumb.
     private static String newModel() {
-        return null;
+        BattleshipModel doggo = new BattleshipModel();
+        Gson gson = new Gson();
+        String model = new String(gson.toJson(doggo));
+        System.out.print(model);
+        return model;
+        //return null;
     }
 
-    //This function should accept an HTTP request and deseralize it into an actual Java object.
+    //This function should accept an HTTP request and deseralize it into an actual Java object. -possibly the worst description i have ever seen
+    //poorly worded and the first reference of battleship model with no explanation of what it actually does
+    //battleshipmodel is a class that creates the structure that will be used to manipulate the json file. it is annoying that it isn't mentioned anywhere in instructions
     private static BattleshipModel getModelFromReq(Request req){
+
         return null;
     }
 
