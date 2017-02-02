@@ -37,8 +37,11 @@ public class ships {
         this.end = new location(end);
     }
 
+
     // copy constructor
-    /* INTIALIZE IF YOU NEED IT (I think for the reqmodel function)
+    // INTIALIZE IF YOU NEED IT (I think for the reqmodel function)
+    // This copies values from a previous ship to the new ships model, This may be helpful for makereq function that is after new 
+    //model, I did not look too much into it though
     public ships(ships copymepapa){
         name = copymepapa.name;
         length = copymepapa.length;
