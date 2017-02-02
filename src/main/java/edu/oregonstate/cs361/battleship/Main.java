@@ -5,13 +5,14 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import com.google.gson.Gson;
-//import com.google.gson.GsonBuilder;
 
 public class Main {
 
     public static void main(String[] args) {
+
         //This will allow us to server the static pages such as index.html, app.js, etc.
         staticFiles.location("/public");
+
 
         //This will listen to GET requests to /model and return a clean new model
         get("/model", (req, res) -> newModel());
@@ -24,11 +25,12 @@ public class Main {
     //This function should return a new model- fuck this description no
     //battleship model creates the structure that is going to be used and all fuckin new model does
     // is create a new battleship and put it into json. that is so dumb.
-    private static String newModel() {
+    static String newModel() {
         BattleshipModel doggo = new BattleshipModel();
+        //builds that beautiful json
         Gson gson = new Gson();
+        //the .tojson json into a string which is the return type of this function
         String model = new String(gson.toJson(doggo));
-        System.out.print(model);
         return model;
         //return null;
     }

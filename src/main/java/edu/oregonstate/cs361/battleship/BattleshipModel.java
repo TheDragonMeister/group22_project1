@@ -27,36 +27,39 @@ public class BattleshipModel {
     //hit information for the user and computer
     private ArrayList<location> playerHits;
     private ArrayList<location> playerMisses;
-    private ArrayList<location> ComputerHits;
-    private ArrayList<location> ComputerMisses;
+    private ArrayList<location> computerHits;
+    private ArrayList<location> computerMisses;
 
     //Intial value for the battleshipmodel object, it calls on the ships object to intialize those values, it's weird trust me.
     public BattleshipModel () {
 
         //player
-        aircraftCarrier = new ships("aircraftCarrier", 5, new location(0,0), new location(0,0));
-        battleship = new ships("battleship", 4, new location(0,0), new location(0,0));
-        cruiser = new ships("cruiser", 3, new location (0,0), new location(0,0));
-        destroyer = new ships("destroyer", 2, new location(0,0), new location(0,0));
-        submarine = new ships("submarine", 2, new location(0,0), new location(0,0));
+        aircraftCarrier = new ships("AircraftCarrier", 5, new location(0,0), new location(0,0));
+        battleship = new ships("Battleship", 4, new location(0,0), new location(0,0));
+        cruiser = new ships("Cruiser", 3, new location (0,0), new location(0,0));
+        destroyer = new ships("Destroyer", 2, new location(0,0), new location(0,0));
+        submarine = new ships("Submarine", 2, new location(0,0), new location(0,0));
 
 
         //hardcoded locations for the ships
-        computer_aircraftCarrier = new ships("Computer_aircraftCarrier", 5, new location(2,2), new location(2,7));
-        computer_battleship = new ships("Computer_battleship", 4, new location(2,8), new location(6,8));
-        computer_cruiser = new ships("Computer_cruiser", 3, new location(4,1), new location(4,4));
-        computer_destroyer = new ships("Computer_destroyer", 2, new location(7,3), new location(7,5));
-        computer_submarine = new ships("Computer_submarine", 2, new location(9,6), new location(9,8));
+        computer_aircraftCarrier = new ships("Computer_AircraftCarrier", 5, new location(2,2), new location(2,7));
+        computer_battleship = new ships("Computer_Battleship", 4, new location(2,8), new location(6,8));
+        computer_cruiser = new ships("Computer_Cruiser", 3, new location(4,1), new location(4,4));
+        computer_destroyer = new ships("Computer_Destroyer", 2, new location(7,3), new location(7,5));
+        computer_submarine = new ships("Computer_Submarine", 2, new location(9,6), new location(9,8));
 
         //player - again, and computer since this part is not hardcoded
         playerHits = new ArrayList<location>();
         playerMisses = new ArrayList<location>();
-        ComputerHits = new ArrayList<location>();
-        ComputerMisses = new ArrayList<location>();
+        computerHits = new ArrayList<location>();
+        computerMisses = new ArrayList<location>();
     }
 
     //If there are already is a battleship model and you want to convert the inputted json file into the model format, idk if this actually works
-    public BattleshipModel(BattleshipModel newship){
+    //NOTE: This is for the reqmodel function in main, since i dont use it for new model I left it commented.
+    //NOTE: It uses the copy function in the ships file - River
+
+    /*public BattleshipModel(BattleshipModel newship){
         aircraftCarrier= newship.aircraftCarrier;
         battleship = new ships(newship.battleship);
         cruiser = new ships (newship.cruiser);
@@ -69,7 +72,7 @@ public class BattleshipModel {
         computer_submarine = new ships(newship.computer_submarine);
         playerHits = new ArrayList<location>(newship.playerHits);
         playerMisses = new ArrayList<location>(newship.playerMisses);
-        ComputerHits = new ArrayList<location>(newship.ComputerHits);
-        ComputerMisses = new ArrayList<location>(newship.ComputerMisses);
-    }
+        computerHits = new ArrayList<location>(newship.computerHits);
+        computerMisses = new ArrayList<location>(newship.computerMisses);
+    }*/
 }
