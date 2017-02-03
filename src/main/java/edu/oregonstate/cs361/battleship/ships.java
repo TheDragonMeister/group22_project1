@@ -42,7 +42,7 @@ public class ships {
     // INTIALIZE IF YOU NEED IT (I think for the reqmodel function)
     // This copies values from a previous ship to the new ships model, This may be helpful for makereq function that is after new 
     //model, I did not look too much into it though
-    public ships(ships copymepapa){
+    /*public ships(ships copymepapa){
         name = copymepapa.name;
         length = copymepapa.length;
         //gotta have those new otherwise there may be an operator overload not taking the chance bucko
