@@ -11,11 +11,11 @@ public class location {
     private int Across;
     private int Down;
 
-    //Dumb intialize that we MUST have
-    public location(){
-        Across = 0;
-        Down = 0;
-    }
+    //I thought this was would be used as an initializer but that never needed to be done
+    //public location(){
+    //    Across = 0;
+    //    Down = 0;
+    //}
 
     //if we are given location and the arguments for across and down
     public location(int x, int y){
