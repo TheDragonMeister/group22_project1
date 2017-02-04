@@ -19,7 +19,7 @@ public class Main {
         //This will listen to POST requests and expects to receive a game model, as well as location to fire to
         post("/fire/:row/:col", (req, res) -> fireAt(req));
         //This will listen to POST requests and expects to receive a game model, as well as location to place the ship
-        post("/placeShip/:id/:row/:col/:orientation", (req, res) -> placeShip(req));
+     //   post("/placeShip/:id/:row/:col/:orientation", (req, res) -> placeShip(req));
     }
 
     //This function should return a new model- fuck this description no
@@ -44,9 +44,50 @@ public class Main {
     }
 
     //This controller should take a json object from the front end, and place the ship as requested, and then return the object.
-    private static String placeShip(Request req) {
-        return null;
+    /*
+    //Place the ships as requested.
+        private static String placingShip(Response res, Request req) {
+        //Converting body into java object
+        BattleshipModel newModel = getModelFromReq(req);
+
+        String idNo;
+        String row;
+        String col;
+        String orientation;
+        idNo = req.params("idNo");
+        row = req.params("row");
+        col = req.params("col");
+        orientation = req.params("orientation");
+        int placeHorizontal = Integer.parseInt(row);
+        int placeVertical = Integer.parseInt(col);
+
+
+
+
+        //Total Attempts
+        String result = newModel.placingShip(idNo, placeHorizontal, placeVertical, orientation);
+
+
+        //if placement failed
+        if(!result.contains("Success:")){
+            res.status(400);
+            return result;
+        }
+
+
+
+
+
+
+        //Convert newModel back into a Json string
+        Gson gson = new Gson();
+        String model = gson.toJson(newModel);
+        res.status(200);
+        return model;
     }
+
+
+    */
 
     //Similar to placeShip, but with firing.
     private static String fireAt(Request req) {
