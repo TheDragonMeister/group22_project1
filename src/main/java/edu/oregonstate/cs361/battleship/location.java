@@ -67,7 +67,7 @@ public class location {
     public void setLocation(int horizontal, int vertical)
     {
         Across = horizontal;
-        Across = vertical;
+        Down = vertical;
     }
 }
 

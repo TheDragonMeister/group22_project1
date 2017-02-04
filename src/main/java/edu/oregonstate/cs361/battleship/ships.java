@@ -1,6 +1,8 @@
 package edu.oregonstate.cs361.battleship;
 
 
+import sun.security.util.Length;
+
 /**
  * Created by River Hendriksen on 1/30/17.
  * This file is for the ship object which is a subset of the battleship model, This is separate from the battleship model \
@@ -29,6 +31,7 @@ public class ships {
         end = new location(0,0);
     }*/
 
+
     //this is if the ship has variables that needed to be inputted by the other files. This is what will happen often.
     public ships(String name, int length, location start, location end){
         this.name = name;
@@ -37,6 +40,32 @@ public class ships {
         this.end = new location(end);
     }
 
+    public int getLength()
+    {
+        return length;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public boolean nameCheck(String passedIn)
+    {
+        //checks the name pased in with the name of the class. the private String name
+        boolean result;
+        String test = name.toLowerCase();
+        result = test.equals(passedIn.toLowerCase());
+        return result;
+    }
+
+    public void setStartLocation(int horizontal, int vertical) {
+        start.setLocation(horizontal, vertical);
+    }
+
+    public void setEndLocation(int across, int down) {
+        end.setLocation(across, down);
+    }
 
     // copy constructor
     // INTIALIZE IF YOU NEED IT (I think for the reqmodel function)
@@ -79,6 +108,17 @@ public class ships {
 
     }
 
-
-
+    public boolean shipOverlap(ships check) {
+        if (start.equals(check.start)) {
+            return true;
+        } else if (start.equals(check.end)) {
+            return true;
+        } else if (end.equals(check.end)) {
+            return true;
+        } else if (end.equals(check.start)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

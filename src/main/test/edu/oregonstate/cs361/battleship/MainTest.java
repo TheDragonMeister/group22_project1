@@ -1,22 +1,19 @@
 package edu.oregonstate.cs361.battleship;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test; import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
 import com.google.gson.Gson;
-
 import spark.Spark;
 import spark.utils.IOUtils;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.awaitInitialization;
+
+        import static spark.Spark.awaitInitialization;
 /**
  * CREDIT: Some of this code was referenced from Michael Hilton via the url below. Since this was public I decided it was appropriate to adopt some of it
  * Specifically request and Test Request functions since they are imperative to testing server information that we are not familiar with.
@@ -118,14 +115,14 @@ public class MainTest {
     }
 
     //Set up the main functon to wait for initialization and not give any arguments to main
-    @Before
+    @BeforeAll
     public void setUp() throws Exception {
         Main.main(null);
         awaitInitialization();
     }
 
     //end the simulate server session
-    @After
+    @AfterAll
     public void tearDown() throws Exception {
         Spark.stop();
     }

@@ -78,42 +78,43 @@ public class BattleshipModel {
 
 
 
-    public String userHitsOrMisses(location point){
+    public String userHitsOrMisses(location location){
         String result;
 
-        if(computer_aircraftCarrier.checkIfHit(point,computer_aircraftCarrier))
+        if(computer_aircraftCarrier.checkIfHit(location,computer_aircraftCarrier))
         {
             result = "you have hit the enemies ship, fire away";
-            playerHits.add(point);
-        }else if (computer_battleship.checkIfHit(point,computer_battleship))
+            playerHits.add(location);
+        }else if (computer_battleship.checkIfHit(location,computer_battleship))
         {
             result = "you have hit the enemies ship, fire away";
-            playerHits.add(point);
-        } else if (computer_cruiser.checkIfHit(point,computer_cruiser))
+            playerHits.add(location);
+        } else if (computer_cruiser.checkIfHit(location,computer_cruiser))
         {
             result = "you have hit the enemies ship, fire away";
-            playerHits.add(point);
-        } else if (computer_destroyer.checkIfHit(point,computer_destroyer))
+            playerHits.add(location);
+        } else if (computer_destroyer.checkIfHit(location,computer_destroyer))
         {
             result = "you have hit the enemies ship, fire away";
-            playerHits.add(point);
-        } else if (computer_submarine.checkIfHit(point,computer_submarine))
+            playerHits.add(location);
+        } else if (computer_submarine.checkIfHit(location,computer_submarine))
         {
             result = "you have hit the enemies ship, fire away";
-            playerHits.add(point);
+            playerHits.add(location);
         }
         else{
             result = "You have missed your shot, fire in new location";
-            playerMisses.add(point);
+            playerMisses.add(location);
         }
         return result;
 
     }
 
-     /*This function will help the user to place the ships and prints an error if he gives a wrong input
-    private String placingShip(String name;int placeHorizontal, int placeVertical, String direction)
+     //This function will help the user to place the ships and prints an error if he gives a wrong input
+    private String placingShip(String name,int placeHorizontal, int placeVertical, String direction)
     {
-        // makes sure starting point isn't out of bounds
+        String result = "";
+        // makes sure starting location isn't out of bounds
         boolean isVertical = direction.equals("vertical");
         if(placeHorizontal > 10 || placeVertical > 10){
             return "Error:Placing out of grid.";
@@ -121,95 +122,113 @@ public class BattleshipModel {
         //Verifys name exists or no
 
         ships addIt;int length;
-        if(aircraftCarrier.checkName(name)) {
+        if(aircraftCarrier.nameCheck(name)) {
             addIt = aircraftCarrier;
             length = addIt.getLength();
             System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
         }
-        else if(battleship.checkName(name)) {
+        else if(battleship.nameCheck(name)) {
             addIt = battleship;
             length = addIt.getLength();
             System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
         }
-        else if (cruiser.checkName(name)) {
+        else if (cruiser.nameCheck(name)) {
             addIt = cruiser;
             length = addIt.getLength();
             System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
         }
-        else if(destroyer.checkName(name)) {
+        else if(destroyer.nameCheck(name)) {
             addIt = destroyer;
             length = addIt.getLength();
             System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
         }
-        else if(submarine.checkName(name)){
+        else if(submarine.nameCheck(name)){
             addIt = submarine;
             length = addIt.getLength();
             System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
         }
-        else
-            return "Error: No ship of that name";
-
+        else {
+            result = "Error: No ship of that name";
+            return result;
+        }
       //Check for placing the ship
 
       if((placeHorizontal + length - 1 ) > 10)
-            return "Error: Placement out of grid";
-    } else{
-        if((placeVertical + length - 1 ) > 10)
-            return "Error: Placement out of grid";
+    {
+            result = "Error: Placement out of grid";
+            return result;
+    } else if ((placeVertical + length - 1 ) > 10)
+    {
+        result = "Error: Placement out of grid";
+        return result;
     }
     int noHorizontal;
     int noVertical;
-    Point start = new Point(placeHorizontal, placeVertical);
-    Point end = new Point();
+    location start = new location(placeHorizontal, placeVertical);
+    location end = new location();
         if(isVertical){
         noHorizontal = placeHorizontal + length - 1;
         noVertical = placeVertical;
-        end.setPoint(noHorizontal, noVertical);
+        end.setLocation(noHorizontal, noVertical);
     } else {
         noHorizontal = placeHorizontal;
         noVertical = placeVertical + length - 1;
-        end.setPoint(noHorizontal, noVertical);
+        end.setLocation(noHorizontal, noVertical);
     }
 
 
-    ships toCheck = new ships(name, length, start, end);
-    boolean overlaps = checkShipOverlap(toCheck);
+    ships check = new ships(name, length, start, end);
+    boolean overlaps = checkShipOverlap(check);
         if(overlaps){
-        return "Error:One Ship placed over the other";
+            result = "Error:One Ship placed over the other";
+            return result;
     }
-        addIt.setStart(placeHorizontal, placeVertical);
-        addIt.setEnd(noHorizontal, noVertical);
 
-        return "Placing Successfull: Placed " + name + " at " + placeHorizontal + ", " + placeVertical;
+        addIt.setStartLocation(placeHorizontal, placeVertical);
+        addIt.setEndLocation(noHorizontal, noVertical);
+        result = "Placing Successfull: Placed " + name + " at " + placeHorizontal + ", " + placeVertical;
+        return result;
 }
-*/
-    public String computerHitsOrMisses(location point){
+
+    public boolean checkShipOverlap(ships check)
+    {
+        boolean result;
+
+        result = aircraftCarrier.shipOverlap(check) ||
+                battleship.shipOverlap(check) ||
+                cruiser.shipOverlap(check) ||
+                destroyer.shipOverlap(check) ||
+                submarine.shipOverlap(check);
+        return result;
+    }
+
+    public String computerHitsOrMisses(location location){
         String result;
 
-        if(aircraftCarrier.checkIfHit(point,computer_aircraftCarrier))
+        if(aircraftCarrier.checkIfHit(location,computer_aircraftCarrier))
         {
             result = "you have hit the enemies ship, fire away";
-            computerHits.add(point);
-        }else if (battleship.checkIfHit(point,computer_battleship))
+            computerHits.add(location);
+        }else if (battleship.checkIfHit(location,computer_battleship))
         {
             result = "you have hit the enemies ship, fire away";
-            computerHits.add(point);
-        } else if (cruiser.checkIfHit(point,computer_cruiser))
+            computerHits.add(location);
+        } else if (cruiser.checkIfHit(location,computer_cruiser))
         {
             result = "you have hit the enemies ship, fire away";
-            computerHits.add(point);
-        } else if (destroyer.checkIfHit(point,computer_destroyer))
+            computerHits.add(location);
+        } else if (destroyer.checkIfHit(location,computer_destroyer))
         {
             result = "you have hit the enemies ship, fire away";
-            computerHits.add(point);
-        } else if (submarine.checkIfHit(point,computer_submarine))
+            computerHits.add(location);
+        } else if (submarine.checkIfHit(location,computer_submarine))
         {
             result = "you have hit the enemies ship, fire away";
-            computerHits.add(point);
+            computerHits.add(location);
         }
         else{
             result = "You have missed your shot, fire in new location";
-            computerHits.add(point);
+            computerMisses.add(location);
         }
         return result;
 
