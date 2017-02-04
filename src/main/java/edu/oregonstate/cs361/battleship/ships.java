@@ -50,4 +50,35 @@ public class ships {
         end = new location(copymepapa.end);
     }*/
 
+
+    public boolean checkIfHit(location point,ships check){
+
+        int horizontalCheck = check.start.horizontalLength(check.end);
+        if(point == check.start) {
+            return true;
+        }else if (point == check.end) {
+            return true;
+        }
+        // makes new object for checking the points
+        location checkPoint = new location();
+        checkPoint.setLocation(check.start.getAcross(), check.start.getDown());
+        int x=0;
+        while(check.length > x)
+        {
+            if (point.equals(checkPoint)) {
+                return true;
+            } else if (horizontalCheck != 0) {
+                checkPoint.setLocation(checkPoint.getAcross() + 1, checkPoint.getDown());
+            } else {
+                checkPoint.setLocation(checkPoint.getAcross(), checkPoint.getDown() + 1);
+            }
+
+            x++;
+        }
+        return false;
+
+    }
+
+
+
 }

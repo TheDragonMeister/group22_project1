@@ -50,7 +50,35 @@ public class Main {
 
     //Similar to placeShip, but with firing.
     private static String fireAt(Request req) {
-        return null;
+        String result = " ";
+
+        BattleshipModel fireModel = getModelFromReq(req);
+        Gson gson = new Gson();
+
+        int fireHorizontal = Integer.parseInt(req.params(":row"));
+        int fireVertical = Integer.parseInt(req.params(":col"));
+
+        location userHitLocation = new location(fireHorizontal,fireVertical);
+        fireModel.userHitsOrMisses(userHitLocation);
+        userHitLocation.setLocation(fireHorizontal, fireVertical);
+            //Fire at location and update computer hits and misses
+
+            fireModel.userHitsOrMisses(userHitLocation);
+
+
+        //this randomizes the computers hit location
+        int computerRandHorizontal = (int )(Math.random() * 10 + 1);
+        int computerRandVertical = (int )(Math.random() * 10 + 1);
+
+        //this makes new object of the random locations
+        location computerFire = new location(computerRandHorizontal, computerRandVertical);
+
+            //checks if it hits or misses
+            fireModel.computerHitsOrMisses(computerFire);
+
+            //Convert game state back to JSON
+            result = gson.toJson(fireModel);
+        return result;
     }
 
 }
