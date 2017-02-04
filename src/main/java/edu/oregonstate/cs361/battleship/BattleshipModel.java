@@ -77,6 +77,7 @@ public class BattleshipModel {
     }*/
 
 
+
     public String userHitsOrMisses(location point){
         String result;
 
@@ -109,6 +110,79 @@ public class BattleshipModel {
 
     }
 
+     /*This function will help the user to place the ships and prints an error if he gives a wrong input
+    private String placingShip(String name;int placeHorizontal, int placeVertical, String direction)
+    {
+        // makes sure starting point isn't out of bounds
+        boolean isVertical = direction.equals("vertical");
+        if(placeHorizontal > 10 || placeVertical > 10){
+            return "Error:Placing out of grid.";
+        }
+        //Verifys name exists or no
+
+        ships addIt;int length;
+        if(aircraftCarrier.checkName(name)) {
+            addIt = aircraftCarrier;
+            length = addIt.getLength();
+            System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
+        }
+        else if(battleship.checkName(name)) {
+            addIt = battleship;
+            length = addIt.getLength();
+            System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
+        }
+        else if (cruiser.checkName(name)) {
+            addIt = cruiser;
+            length = addIt.getLength();
+            System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
+        }
+        else if(destroyer.checkName(name)) {
+            addIt = destroyer;
+            length = addIt.getLength();
+            System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
+        }
+        else if(submarine.checkName(name)){
+            addIt = submarine;
+            length = addIt.getLength();
+            System.out.println("Ship: " + addIt.getName() + "Length: " + addIt.getLength());
+        }
+        else
+            return "Error: No ship of that name";
+
+      //Check for placing the ship
+
+      if((placeHorizontal + length - 1 ) > 10)
+            return "Error: Placement out of grid";
+    } else{
+        if((placeVertical + length - 1 ) > 10)
+            return "Error: Placement out of grid";
+    }
+    int noHorizontal;
+    int noVertical;
+    Point start = new Point(placeHorizontal, placeVertical);
+    Point end = new Point();
+        if(isVertical){
+        noHorizontal = placeHorizontal + length - 1;
+        noVertical = placeVertical;
+        end.setPoint(noHorizontal, noVertical);
+    } else {
+        noHorizontal = placeHorizontal;
+        noVertical = placeVertical + length - 1;
+        end.setPoint(noHorizontal, noVertical);
+    }
+
+
+    ships toCheck = new ships(name, length, start, end);
+    boolean overlaps = checkShipOverlap(toCheck);
+        if(overlaps){
+        return "Error:One Ship placed over the other";
+    }
+        addIt.setStart(placeHorizontal, placeVertical);
+        addIt.setEnd(noHorizontal, noVertical);
+
+        return "Placing Successfull: Placed " + name + " at " + placeHorizontal + ", " + placeVertical;
+}
+*/
     public String computerHitsOrMisses(location point){
         String result;
 
