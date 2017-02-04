@@ -75,4 +75,70 @@ public class BattleshipModel {
         computerHits = new ArrayList<location>(newship.computerHits);
         computerMisses = new ArrayList<location>(newship.computerMisses);
     }*/
+
+
+    public String userHitsOrMisses(location point){
+        String result;
+
+        if(computer_aircraftCarrier.checkIfHit(point,computer_aircraftCarrier))
+        {
+            result = "you have hit the enemies ship, fire away";
+            playerHits.add(point);
+        }else if (computer_battleship.checkIfHit(point,computer_battleship))
+        {
+            result = "you have hit the enemies ship, fire away";
+            playerHits.add(point);
+        } else if (computer_cruiser.checkIfHit(point,computer_cruiser))
+        {
+            result = "you have hit the enemies ship, fire away";
+            playerHits.add(point);
+        } else if (computer_destroyer.checkIfHit(point,computer_destroyer))
+        {
+            result = "you have hit the enemies ship, fire away";
+            playerHits.add(point);
+        } else if (computer_submarine.checkIfHit(point,computer_submarine))
+        {
+            result = "you have hit the enemies ship, fire away";
+            playerHits.add(point);
+        }
+        else{
+            result = "You have missed your shot, fire in new location";
+            playerMisses.add(point);
+        }
+        return result;
+
+    }
+
+    public String computerHitsOrMisses(location point){
+        String result;
+
+        if(aircraftCarrier.checkIfHit(point,computer_aircraftCarrier))
+        {
+            result = "you have hit the enemies ship, fire away";
+            computerHits.add(point);
+        }else if (battleship.checkIfHit(point,computer_battleship))
+        {
+            result = "you have hit the enemies ship, fire away";
+            computerHits.add(point);
+        } else if (cruiser.checkIfHit(point,computer_cruiser))
+        {
+            result = "you have hit the enemies ship, fire away";
+            computerHits.add(point);
+        } else if (destroyer.checkIfHit(point,computer_destroyer))
+        {
+            result = "you have hit the enemies ship, fire away";
+            computerHits.add(point);
+        } else if (submarine.checkIfHit(point,computer_submarine))
+        {
+            result = "you have hit the enemies ship, fire away";
+            computerHits.add(point);
+        }
+        else{
+            result = "You have missed your shot, fire in new location";
+            computerHits.add(point);
+        }
+        return result;
+
+    }
+
 }

@@ -12,12 +12,12 @@ public class location {
     private int Down;
 
     //I thought this was would be used as an initializer but that never needed to be done
-    //public location(){
-    //    Across = 0;
-    //    Down = 0;
-    //}
+    public location(){
+       Across = 0;
+       Down = 0;
+    }
 
-    //if we are given location and the arguments for across and down
+    //if we are given location and the arguments for x = across and y = down
     public location(int x, int y){
         this.Across = x;
         this.Down = y;
@@ -29,4 +29,47 @@ public class location {
         Down = copymebaby.Down;
     }
 
+    //in case we need to access it out side the class
+    public int getAcross(){
+        return Across;
+    }
+
+    public int getDown()
+    {
+        return Down;
+    }
+    //to check the vertical length of the board
+    public int verticalLength(location point)
+    {
+       int sendingLength;
+        if(point.Down >= Down)
+        {
+            sendingLength = point.Down - Down;
+        } else {
+            sendingLength = Down - point.Down;
+        }
+        return sendingLength;
+    }
+
+    //to check the horizontal length of the board
+    public int horizontalLength(location point)
+    {
+        int sendingLength;
+            if(point.Across >= Across) {
+                sendingLength = point.Across - Across;
+            } else {
+                sendingLength = Across - point.Across;
+            }
+        return sendingLength;
+    }
+
+    //sets the location of the point you want.
+    public void setLocation(int horizontal, int vertical)
+    {
+        Across = horizontal;
+        Across = vertical;
+    }
 }
+
+
+
