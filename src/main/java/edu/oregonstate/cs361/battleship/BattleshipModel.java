@@ -152,7 +152,7 @@ public class BattleshipModel {
       //Check for placing the ship
 
       if((placeHorizontal + length - 1 ) > 10)
-            return "Error: Placement out of grid";
+        return "Error: Placement out of grid";
     } else{
         if((placeVertical + length - 1 ) > 10)
             return "Error: Placement out of grid";
@@ -215,4 +215,8 @@ public class BattleshipModel {
 
     }
 
+
+     public String placingShip(String idNo, int placeHorizontal, int placeVertical, String orientation) {
+         return idNo;
+    }
 }

@@ -5,6 +5,7 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
 import com.google.gson.Gson;
+import spark.Response;
 
 public class Main {
 
@@ -44,7 +45,7 @@ public class Main {
     }
 
     //This controller should take a json object from the front end, and place the ship as requested, and then return the object.
-    /*
+
     //Place the ships as requested.
         private static String placingShip(Response res, Request req) {
         //Converting body into java object
@@ -67,7 +68,6 @@ public class Main {
         //Total Attempts
         String result = newModel.placingShip(idNo, placeHorizontal, placeVertical, orientation);
 
-
         //if placement failed
         if(!result.contains("Success:")){
             res.status(400);
@@ -87,7 +87,7 @@ public class Main {
     }
 
 
-    */
+
 
     //Similar to placeShip, but with firing.
     private static String fireAt(Request req) {
