@@ -35,17 +35,19 @@ public class Main {
         //return null;
     }
 
-    //This function should accept an HTTP request and deseralize it into an actual Java object. -possibly the worst description i have ever seen
-    //poorly worded and the first reference of battleship model with no explanation of what it actually does
-    //battleshipmodel is a class that creates the structure that will be used to manipulate the json file. it is annoying that it isn't mentioned anywhere in instructions
+    //This function should accept an HTTP request and deseralize it into an actual Java object.
+    //battleshipmodel is a class that creates the structure that will be used to manipulate the json file.
     private static BattleshipModel getModelFromReq(Request req){
+		Gson gson = new Gson();//make gson and its container
+        String jsonInString = req.body();//get the body of the parameters as a string
+        BattleshipModel ships = gson.fromJson(jsonInString, BattleshipModel.class);//use a function convert Json to Java code so that we can have the clients informations.
+        return ships;
 
-        return null;
     }
 
     //This controller should take a json object from the front end, and place the ship as requested, and then return the object.
     private static String placeShip(Request req) {
-        return null;
+        return "empty";
     }
 
     //Similar to placeShip, but with firing.
@@ -59,25 +61,18 @@ public class Main {
         int fireVertical = Integer.parseInt(req.params(":col"));
 
         location userHitLocation = new location(fireHorizontal,fireVertical);
-        fireModel.userHitsOrMisses(userHitLocation);
-        userHitLocation.setLocation(fireHorizontal, fireVertical);
-            //Fire at location and update computer hits and misses
+        String Fire = fireModel.userHitsOrMisses(userHitLocation);
 
-            fireModel.userHitsOrMisses(userHitLocation);
-
-
-        //this randomizes the computers hit location
         int computerRandHorizontal = (int )(Math.random() * 10 + 1);
         int computerRandVertical = (int )(Math.random() * 10 + 1);
 
-        //this makes new object of the random locations
         location computerFire = new location(computerRandHorizontal, computerRandVertical);
 
-            //checks if it hits or misses
-            fireModel.computerHitsOrMisses(computerFire);
+        //checks if it hits or misses
+        fireModel.computerHitsOrMisses(computerFire);
 
-            //Convert game state back to JSON
-            result = gson.toJson(fireModel);
+        //Convert game state back to JSON
+        result = gson.toJson(fireModel);
         return result;
     }
 

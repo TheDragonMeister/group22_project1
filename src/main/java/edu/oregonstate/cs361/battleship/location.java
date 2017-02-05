@@ -45,7 +45,8 @@ public class location {
         if(point.Down >= Down)
         {
             sendingLength = point.Down - Down;
-        } else {
+        }
+        else {
             sendingLength = Down - point.Down;
         }
         return sendingLength;
@@ -64,7 +65,7 @@ public class location {
     }
 
     //sets the location of the point you want.
-    public void setLocation(int horizontal, int vertical)
+   public void setLocation(int horizontal, int vertical)
     {
         Across = horizontal;
         Across = vertical;
