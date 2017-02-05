@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import com.google.gson.Gson;
 
+import spark.Request;
 import spark.Spark;
 import spark.utils.IOUtils;
 
@@ -33,11 +34,11 @@ public class MainTest {
      * was 200 (which means it is OK). The other test checks that the new json string is the same as the one provided in the readme
      * at the beginning of the project github.
      */
+
     @Test
     public void newModel() throws Exception {
         TestResponse res = request("GET", "/model");
         assertEquals(200, res.status);
-
         /**
          * This string is the words ripped from github, since this is a beautified version
          * We need to strip the new line characters and spaces
@@ -130,8 +131,13 @@ public class MainTest {
         Spark.stop();
     }
 
-    //Michael Hilton Code
-
+    @Test
+    public void testGetModel() {
+        TestResponse res = request("GET", "/model");
+        assertEquals(200, res.status);
+        
+    }
+    
     /**
      * Creates a new url (spark always has the same localhost url) then tries to connect to the local host
      * If not it catches the exception and throws an error

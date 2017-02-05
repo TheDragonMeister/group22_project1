@@ -54,9 +54,10 @@ public class ships {
     public boolean checkIfHit(location point,ships check){
 
         int horizontalCheck = check.start.horizontalLength(check.end);
-        if(point == check.start) {
+        if(point.getAcross() == check.start.getAcross() && point.getDown() == check.start.getDown()) {
             return true;
-        }else if (point == check.end) {
+        }
+		else if (point.getAcross()== check.end.getAcross() && point.getDown() == check.end.getDown()) {
             return true;
         }
         // makes new object for checking the points
